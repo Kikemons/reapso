@@ -10,5 +10,6 @@ public interface IproductoServices {
     public Optional<Producto> obtener (Integer id);
     public void actualizar(Producto producto);
     public void borrar(Integer id);
+    public List<Producto> mostrar();
 
 }

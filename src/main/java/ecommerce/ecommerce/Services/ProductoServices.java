@@ -5,6 +5,7 @@ import ecommerce.ecommerce.model.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,5 +31,10 @@ public class ProductoServices implements IproductoServices {
     @Override
     public void borrar(Integer id) {
     productoRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Producto> mostrar() {
+        return productoRepository.findAll();
     }
 }
