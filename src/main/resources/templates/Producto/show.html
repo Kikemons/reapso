@@ -31,7 +31,7 @@
   </h1>
 
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item"><a th:href="@{/administrador}">Home</a></li>
     <li class="breadcrumb-item active">Ver Productos</li>
   </ol>
 
@@ -54,8 +54,8 @@
         <td th:text="${producto.descripcion}"></td>
         <td th:text="${producto.cantidad}"></td>
         <td th:text="${producto.precio}"></td>
-        <td><a  class="btn btn-warning" href="">Editar</a> </td>
-        <td><a  class="btn btn-danger" href="">Eliminar</a> </td>
+        <td><a  class="btn btn-warning" th:href="@{/Producto/Editar/{id} (id=${producto.id})  }">Editar</a> </td>
+        <td><a  class="btn btn-danger" th:href="@{/Producto/Eliminar/{id} (id=${producto.id}) }">Eliminar</a> </td>
       </tr>       
     </tbody>
   </table>
@@ -67,8 +67,8 @@
 <div th:include="administrador/template_admin.html::footer"></div>
 
 <!-- Bootstrap core JavaScript -->
-  <script th:src="@{vendor/jquery/jquery.min.js}"></script>
-  <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
 </body>
 

@@ -7,9 +7,9 @@ import org.slf4j.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 
 @Controller
@@ -43,7 +43,28 @@ public class ProductoController {
 
     }
 
+    @GetMapping("/Editar/{id}")
+    public String Editar(@PathVariable Integer id, Model model){
+        Producto producto= new Producto();
+        Optional<Producto>optionalProducto=productoServices.obtener(id);
+        producto=optionalProducto.get();
+        model.addAttribute("producto", producto);
 
+        Loger.info("producto buscado {}",producto);
+        return  "Producto/edit";
+    }
+
+    @PostMapping("/Actualizar")
+    public String Actualizar(Producto producto){
+        productoServices.actualizar(producto);
+        return "redirect:/Producto";
+    }
+
+    @GetMapping("/Eliminar/{id}")
+    public String Eliminar(@PathVariable Integer id){
+        productoServices.borrar(id);
+        return "redirect:/Producto";
+    }
 
 
 }
